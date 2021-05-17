@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import { getPageList } from "./Pages";
 
@@ -9,6 +9,9 @@ function App() {
 
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Route exact path="/">
+          <Redirect to="/search" />
+      </Route>
       <Switch>
         {Routes.map((page) => {
           return (
