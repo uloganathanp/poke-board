@@ -12,7 +12,7 @@ export function PokeCard(props: { pokemon: BasicPokemon; clickHandler: any }) {
   const pokeIndex = urlEle[urlEle.length - 2];
   //Pokemon image source
   const pokeImageSrc =
-    "https://pokeres.bastionbot.org/images/pokemon/" + pokeIndex + ".png";
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokeIndex + ".png";
   return (
     <div
       className={"card poke-card card-bg" + (parseInt(pokeIndex) % 24)}

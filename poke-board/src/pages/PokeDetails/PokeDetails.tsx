@@ -82,7 +82,7 @@ export function PokeDetails() {
               <h5 className="text-white">#{pokemon.id}</h5>
               <img
                 src={
-                  "https://pokeres.bastionbot.org/images/pokemon/" +
+                  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
                   pokemon.id +
                   ".png"
                 }
