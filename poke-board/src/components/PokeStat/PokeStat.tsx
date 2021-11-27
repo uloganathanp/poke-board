@@ -1,6 +1,6 @@
 import { Pokemon } from "../../types/Pokemon";
 import { Stat } from "../../types/Stat";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import LinearProgress from "@mui/material/LinearProgress";
 
 /**
  * Represetation component

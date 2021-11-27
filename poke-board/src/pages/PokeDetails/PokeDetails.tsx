@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Pokemon } from "../../types/Pokemon";
 import { pokemonAdaptor } from "../../util/pokemonAdaptor/pokemonAdaptor";
-import Chip from "@material-ui/core/Chip";
+import Chip from "@mui/material/Chip";
 import { dataFetch } from "../../util/dataFetch/dataFetch";
 import { PokeAbout } from "../../components/PokeAbout/PokeAbout";
 import { PokeStat } from "../../components/PokeStat/PokeStat";

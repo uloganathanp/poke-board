@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PokeCard } from "../../components/PokeCard/PokeCard";
 import { BasicPokemon } from "../../types/BasicPokemon";
-import { TablePagination, TextField } from "@material-ui/core";
-import { Autocomplete } from "@material-ui/lab";
+import { TablePagination, TextField, Autocomplete } from "@mui/material";
 import { useHistory, useParams } from "react-router-dom";
 import { dataFetch } from "../../util/dataFetch/dataFetch";
 
@@ -107,6 +106,11 @@ export function PokeSearch() {
     history.push(`/pokemon/${pokeNum}`);
   };
 
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPageSize(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -162,9 +166,10 @@ export function PokeSearch() {
           component="div"
           count={pokemonFullList.length}
           page={page - 1}
-          onChangePage={pageHandler}
+          onPageChange={pageHandler}
           rowsPerPage={pageSize}
           labelRowsPerPage=""
+          onRowsPerPageChange={handleChangeRowsPerPage}
           rowsPerPageOptions={[24, 48, 96]}
         ></TablePagination>
       </div>
