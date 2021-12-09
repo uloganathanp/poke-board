@@ -28,7 +28,7 @@ export function PokeSearch() {
    * Avoided server side pagination since call takes less to fetch complete list
    */
   const getPokemonData = () => {
-    const pokeUrl = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1124";
+    const pokeUrl = `${process.env.REACT_APP_API_URL}pokemon?offset=0&limit=1124`;
     dataFetch(pokeUrl)
       .then((data) => {
         if (data.results) {
@@ -71,7 +71,6 @@ export function PokeSearch() {
    * @param currentPage
    */
   const setPokemonData = (pokeList: BasicPokemon[], currentPage: number) => {
-    console.log(pokeList);
     const data = pokeList.slice(
       (currentPage - 1) * pageSize,
       currentPage * pageSize
@@ -102,11 +101,12 @@ export function PokeSearch() {
    * @param pokeNum
    */
   const selectPoke = (pokeNum: number) => {
-    console.log(pokeNum);
     history.push(`/pokemon/${pokeNum}`);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setPageSize(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -151,6 +151,7 @@ export function PokeSearch() {
             label="Filter Pokemon"
             onChange={filterPokeList}
             fullWidth
+            variant="standard"
           />
         </div>
       </div>

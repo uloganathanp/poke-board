@@ -21,6 +21,7 @@ export async function dataFetch(url: string) {
     })
     .catch((error) => {
       console.log(error);
+      throw error;
     });
   return result;
 }

@@ -19,8 +19,6 @@ code {
 .noMargin {
   margin: 0 !important;
 }
-.main {
-}
 .poke-card {
   margin-top: 0.8em;
   cursor: pointer;

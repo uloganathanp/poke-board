@@ -29,7 +29,11 @@ export function PokeAbout({ pokemon }: { pokemon: Pokemon }) {
         <div className="col-6 topMargin-1x">Egg Groups</div>
         <div className="col-6 topMargin-1x">
           {pokemon.egg_groups.map((group: string) => (
-            <span className="badge bg-warning" style={{ marginRight: "1em" }}>
+            <span
+              className="badge bg-warning"
+              key={group}
+              style={{ marginRight: "1em" }}
+            >
               {group}
             </span>
           ))}

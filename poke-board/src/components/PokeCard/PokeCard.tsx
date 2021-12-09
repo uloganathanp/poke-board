@@ -11,8 +11,7 @@ export function PokeCard(props: { pokemon: BasicPokemon; clickHandler: any }) {
   //Pokemon Id from URL
   const pokeIndex = urlEle[urlEle.length - 2];
   //Pokemon image source
-  const pokeImageSrc =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + pokeIndex + ".png";
+  const pokeImageSrc = `${process.env.REACT_APP_IMAGE_URL}${pokeIndex}.png`;
   return (
     <div
       className={"card poke-card card-bg" + (parseInt(pokeIndex) % 24)}
