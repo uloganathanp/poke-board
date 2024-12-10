@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PokeCard } from "../../components/PokeCard/PokeCard";
 import { BasicPokemon } from "../../types/BasicPokemon";
 import { TablePagination, TextField, Autocomplete } from "@mui/material";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { dataFetch } from "../../util/dataFetch/dataFetch";
 
 /**
@@ -21,7 +21,7 @@ export function PokeSearch() {
   //Pagination Page size
   const [pageSize, setPageSize] = useState<number>(24);
   //Browser history
-  const history = useHistory();
+  const history = useNavigate();
 
   /**
    * Fetch complete list of pokemon from pokeapi
@@ -88,7 +88,7 @@ export function PokeSearch() {
     newPage: number
   ) => {
     setPage(newPage + 1);
-    history.push(`/search/${newPage + 1}`);
+    history(`/search/${newPage + 1}`);
     setPokemonData(pokemonFullList, newPage + 1);
   };
 
@@ -101,7 +101,7 @@ export function PokeSearch() {
    * @param pokeNum
    */
   const selectPoke = (pokeNum: number) => {
-    history.push(`/pokemon/${pokeNum}`);
+    history(`/pokemon/${pokeNum}`);
   };
 
   const handleChangeRowsPerPage = (

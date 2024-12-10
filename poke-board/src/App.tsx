@@ -1,27 +1,28 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import { getPageList } from "./Pages";
 
 function App() {
   //Get all the pages
-  const Routes = getPageList();
+  const pageRoutes = getPageList();
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Route exact path="/">
-          <Redirect to="/search" />
-      </Route>
-      <Switch>
-        {Routes.map((page) => {
+    <Router basename={process.env.PUBLIC_URL}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/search" replace />} />
+        {pageRoutes.map((page) => {
           return (
-            <Route key={page.id} path={page.path} exact>
-              {page.element}
-            </Route>
+            <Route key={page.id} path={page.path} element={page.element} />
           );
         })}
-      </Switch>
-    </BrowserRouter>
+      </Routes>
+    </Router>
   );
 }
 

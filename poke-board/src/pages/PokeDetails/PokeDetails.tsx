@@ -6,7 +6,7 @@ import Chip from "@mui/material/Chip";
 import { dataFetch } from "../../util/dataFetch/dataFetch";
 import { PokeAbout } from "../../components/PokeAbout/PokeAbout";
 import { PokeStat } from "../../components/PokeStat/PokeStat";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 
 /**
@@ -24,7 +24,7 @@ export function PokeDetails() {
   //Pokemon Object which contains selected properties with simple form
   const [pokemon, setPokemon] = useState<Pokemon | any>(null);
   //Browser history
-  const history = useHistory();
+  const history = useNavigate();
 
   /**
    * Fetch Poekmon info from PokeApi
@@ -58,13 +58,13 @@ export function PokeDetails() {
       });
   };
 
-  const navigatePokemon = (pokeNum: string, forward: boolean) => {
+  const navigatePokemon = (pokeNum: string | any, forward: boolean) => {
     setPokemon(null);
     setPokemonInfo(null);
     setPokemonSpecies(null);
     const targetId = forward ? parseInt(pokeNum) + 1 : parseInt(pokeNum) - 1;
     pokeId = targetId.toString();
-    history.push(`/pokemon/${targetId}`);
+    history(`/pokemon/${targetId}`);
   };
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export function PokeDetails() {
                   <a
                     className="btn btn-info topMargin-1x"
                     style={{ marginBottom: "1em" }}
-                    onClick={history.goBack}
+                    onClick={() => history(-1)}
                   >
                     Back
                   </a>
